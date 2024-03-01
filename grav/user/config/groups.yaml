@@ -1,1 +1,21 @@
-{  }
+Editor:
+  access:
+    site:
+      login: true
+    admin:
+      login: true
+      cache: true
+      configuration: false
+      pages: true
+      maintenance: true
+      statistics: true
+      plugins: false
+      themes: false
+      tools: true
+      users: true
+  enabled: true
+Login:
+  access:
+    site:
+      login: true
+  enabled: true

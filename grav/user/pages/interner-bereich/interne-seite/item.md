@@ -1,5 +1,8 @@
 ---
 title: 'Interne Seite'
+show_pageimage: true
+image_width: 1000
+image_height: 300
 ---
 
-Diese Seite sollte eigentlich nur sichtbar sein für eingeloggte user
+Diese Seite ist nur für angemeldete Benutzer sichtbar
