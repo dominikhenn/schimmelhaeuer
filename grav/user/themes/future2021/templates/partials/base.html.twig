@@ -1,0 +1,105 @@
+{# Define global variables #}
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+{% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
+{% set favicon = theme_config.favicon ? theme_config.favicon|first : { type:'image/png', path: url('theme://images/favicon.png') } %}
+
+{# Set Google Fonts source - Local or Remote#}
+{% set google_fonts = theme_var('google_fonts_local') ? '-local.css' : '-remote.css' %}
+
+{# Set site language and datestamp for pages #}
+{% set lang = grav.language.getActive ?: grav.config.site.default_lang %}
+{% set datestamp = include('partials/page-bits/date.html.twig') %}
+
+{# Define if sidebar is shown in the page #}
+{% set show_sidebar = header_var('show_sidebar')|defined(false) %}
+
+{# Configuration of header and sidebar buttons #}
+{% set icon_lang = theme_var('menu_langswitcher')|defined('false') %}
+{% set icon_search = theme_var('menu_search')|defined('false') %}
+{% set icon_login = theme_var('menu_login')|defined('false') %}
+{% set logoImageHeader = theme_var('type_logo_header')|defined('text') %}
+
+{# Define if the primary image and the attributes of width and height are shown #}
+{% set show_image = header_var('show_pageimage')|defined(true) %}
+{% set image = page.media[page.header.primaryImage] ?: page.media.all|filter((v, k) => k != page.header.avatarImage and (v.type == 'image' or v.type == 'vector'))|first %}
+{% set img_width = header_var('image_width')|default(1038) %}
+{% set img_height = header_var('image_height')|default(437) %}
+
+{# Set title and subtitle #}
+{% set title = page.title|raw %}
+{% set subtitle = page.header.subtitle|raw %}
+
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+  <head>
+    {% block head deferred %}
+      <title>{% if page.title %}{{ page.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+      <meta charset="utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
+      {% include 'partials/metadata.html.twig' %}
+      <link rel="icon" type="{{ favicon.type }}" href="{{ url( favicon.path ) }}"/>
+      <link rel="canonical" href="{{ page.url(true, true) }}"/>
+    {% endblock head %}
+
+    {% block stylesheets %}
+      {% do assets.addCss('theme://assets/css/main'~compress) %}
+      {% do assets.addCss('theme://assets/css/fontawesome-all.min.css',{'rel':'preload','as':'style','onload':'this.rel="stylesheet"'}) %}
+      {% do assets.addCss('theme://assets/css/misc.css', 10) %}
+      {% do assets.addCss('theme://assets/css/custom.css', 15) %}
+      {% do assets.addCss('theme://assets/css/google-fonts' ~ google_fonts, {'priority': 20}) %}
+    {% endblock %}
+
+    {% block javascripts %}
+      {% do assets.add('jquery',101) %}
+      {% do assets.addJs('theme://assets/js/browser.min.js', {group:'bottom'}) %}
+      {% do assets.addJs('theme://assets/js/breakpoints.min.js', {group:'bottom'}) %}
+      {% do assets.addJs('theme://assets/js/util.js', {group:'bottom'}) %}
+      {% do assets.addJs('theme://assets/js/main.js', {group:'bottom'}) %}
+      {% do assets.addJs('theme://assets/js/custom.js', {group:'bottom'}) %}
+    {% endblock %}
+
+    {% block assets deferred %}
+        {{ assets.css()|raw }}
+        {{ assets.js()|raw }}
+    {% endblock %}
+
+  </head>
+  <body class="{% block body_classes %}{{ page.header.body_classes }}{% endblock %} is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      {% block header %}
+        {% include 'partials/header.html.twig' %}
+      {% endblock %}
+
+      {% block body %}
+
+        {% block menu %}{% endblock %}
+
+        {% block main %}
+          <div id="main">
+            {% block content %}{% endblock %}
+          </div>
+
+            {% block sidebar %}{% endblock %}
+
+        {% endblock %}
+
+      {% endblock %}
+
+      <a id="back-to-top" href="#" aria-label="{{ 'FUTURE.MISC.BACK_TO_TOP'|t }}" title="{{ 'FUTURE.MISC.BACK_TO_TOP'|t }}">
+        <i class="fa fa-chevron-up"></i>
+      </a>
+
+      {% block bottom %}
+        {{ assets.js('bottom')|raw }}
+      {% endblock %}
+    </div>
+  </body>
+</html>
+<!--
+  Future Imperfect by HTML5 UP
+  html5up.net | @ajlkn
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->

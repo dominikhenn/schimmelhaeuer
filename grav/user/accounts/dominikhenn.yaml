@@ -1,0 +1,16 @@
+state: enabled
+email: dominik-henn@web.de
+fullname: 'Dominik Henn'
+title: Administrator
+hashed_password: $2y$10$NzjvckTcPuKDIPAOd0jTfuELIgbGxBBPNzYWOAvuOlLgGo6YBCwBa
+language: de
+content_editor: default
+twofa_enabled: false
+twofa_secret: RJQ4ZEUJX7PMGU5DA3HK7DD6FC6QRZSU
+avatar: {  }
+access:
+  site:
+    login: true
+  admin:
+    login: true
+    super: true

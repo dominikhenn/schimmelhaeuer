@@ -1,0 +1,14 @@
+version: '1.2'
+timestamp: 1706288626
+count: 2
+index:
+  dominikhenn:
+    storage_key: dominikhenn
+    storage_timestamp: 1706274726
+    key: dominikhenn
+    email: dominik-henn@web.de
+  user:
+    storage_key: user
+    storage_timestamp: 1706288626
+    key: user
+    email: user@example.com

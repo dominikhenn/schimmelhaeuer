@@ -1,0 +1,58 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set collection = page.collection() %}
+{% set show_breadcrumbs = header_var('show_breadcrumbs', [page, events])|defined(true) %}
+{% set show_pagination = header_var('show_pagination', [page, events])|defined(true) %}
+{% set show_sidebar = header_var('show_sidebar', [page, events])|defined(true)  %}
+
+{% block menu %}
+  {% include 'partials/sidebar_right.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    <article class="heading">
+        <header style="border-bottom: solid 1px rgba(160, 160, 160, 0.3);margin-bottom: 3em;padding-bottom: 3em;">
+            <div class="title">
+                <h1 itemprop="headline">{{ title }}</h1>
+            </div>
+
+            {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
+                {% include 'partials/breadcrumbs.html.twig' %}
+            {% endif %}
+        </header>
+
+        {{ page.content|raw }}
+
+        <div class="events-container">
+            <section class="events-listing">
+                {% if collection|length != 0 %}
+                    {% for event in collection %}
+                        {% if event.header.event.start|date('Y-m-d') >= 'now'|date('Y-m-d') %}
+                            {% include 'partials/event_item.html.twig' with { 'page': event, 'single': false } %}
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <h3>{{ "PLUGIN_EVENTS.EVENTS.NO_EVENTS_TITLE"|t }}</h3>
+                    <p>{{ ("PLUGIN_EVENTS.EVENTS.NO_EVENTS_CONTENT"|t(uri.param('category')))|markdown }}</p>
+                {% endif %}
+            </section>
+        </div>
+    </article>
+
+    {% if show_pagination and config.plugins.pagination.enabled and collection.params.pagination %}
+        {% include 'partials/pagination.html.twig' with {'base_url': page.url, 'pagination': collection.params.pagination} %}
+    {% endif %}
+
+    {% if show_sidebar == false %}
+        <section id="footer" class="align-center">
+            {% include 'partials/sidebar-bits/footer.html.twig' %}
+        </section>
+    {% endif %}
+
+{% endblock %}
+
+{% block sidebar %}
+{% if show_sidebar == true %}
+    {% include 'partials/sidebar_left.html.twig' %}
+{% endif %}
+{% endblock %}

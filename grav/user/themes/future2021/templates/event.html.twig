@@ -1,0 +1,17 @@
+{% extends 'partials/base.html.twig' %}
+{% set show_breadcrumbs = header_var('show_breadcrumbs', [page, blog])|defined(true) %}
+
+{% block content %}
+    <article class="heading">
+        <header style="border-bottom: solid 1px rgba(160, 160, 160, 0.3);margin-bottom: 3em;padding-bottom: 3em;">
+            {% if show_breadcrumbs and config.plugins.breadcrumbs.enabled %}
+                {% include 'partials/breadcrumbs.html.twig' %}
+            {% endif %}
+        </header>
+        <div class="event-container">
+            <section class="event-listing">
+                {% include 'partials/event_item.html.twig' with { 'event': page.parent, 'single': true } %}
+            </section>
+        </div>
+    </article>
+{% endblock %}

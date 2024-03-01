@@ -1,0 +1,73 @@
+<article class="event-article">
+    <section class="event">
+        {% if single == true %}
+            {% set image = page.media.images|first %}
+            {% if show_image and image %}
+                <span class="image featured">
+                    {{ image.cropZoom(img_width, img_height).loading('lazy').attribute('decoding','async').html(title, title)|raw }}
+                </span>
+            {% endif %}
+        {% endif %}
+
+        <div class="event-left-column"> {# date and time #}
+            <time class="event-datetime" datetime="{{ page.date|date("c") }}">
+        {% if single == true %} {# individual content page #}
+
+            <span class="event-date">{{ page.header.event.start|td(null, config.plugins.events.event_item.date) }}</span>
+            <span class="event-time">
+                {% set end = "" %}
+                {% if page.header.event.end %}
+                    {% set end = " - " ~ page.header.event.end|td(null, config.plugins.events.event_item.time) %}
+                {% endif %}
+                {{ page.header.event.start|td(null, config.plugins.events.event_item.time) ~ end }}
+            </span>
+
+        {% else %} {# main listing page #}
+            <span class="event-date">
+                {{ page.header.event.start|td(null, config.plugins.events.event_item.date) }}
+                {% if page.header.event.end and page.header.event.start|td(null, 'd') != page.header.event.end|td(null, 'd') %}
+                    &nbsp;-&nbsp;{{ page.header.event.end|td(null, config.plugins.events.event_item.date) }}
+                {%endif %}
+            </span>
+            <span class="event-time">
+                {% set end = "" %}
+                {% if page.header.event.end %}
+                    {% set end = " - " ~ page.header.event.end|td(null, config.plugins.events.event_item.time) %}
+                {% endif %}
+                {{ page.header.event.start|td(null, config.plugins.events.event_item.time) ~ end }}
+            </span>
+        {% endif %}
+            </time>
+        </div>
+
+        <div class="event-right-column"> {# date and time #}
+        {% if single == true %} {# individual content page #}
+            <h2 class="event-title">{{ page.title }}</h2>
+            {% if (config.plugins.events.event_meta.display_location) and (page.header.event.location is not empty) %}
+            <h3 class="event-location"><span class="location-pin"></span>{{ page.header.event.location }}</h3>
+            {% endif %}
+            <div class="event-content">{{ page.content|raw }}</div>
+
+        {% else %} {# main listing page #}
+            <h2 class="event-title"><a href="{{ page.url }}">{{ page.title }}</a></h2>
+            {% if (config.plugins.events.event_meta.display_location) and (page.header.event.location is not empty) %}
+            <h3 class="event-location"><span class="location-pin"></span>{{ page.header.event.location }}</h3>
+            {% endif %}
+            <div class="event-summary">
+                {{ page.summary(300)|raw }}
+            </div>
+        {% endif %}
+
+        {% if page.taxonomy.category and config.plugins.events.event_sidebar.enable_categories %}
+            <div class="event-categories">
+                <span class="event-tags">
+                {% for category in page.taxonomy.category %}
+                    <a href="{{ event.url|rtrim('/') }}/category{{ config.system.param_sep }}{{ category }}">{{ category }}</a>
+                {% endfor %}
+                </span>
+            </div>
+        {% endif %}
+        </div>
+    </section>
+</article>
+<article class="event-separator"></article>

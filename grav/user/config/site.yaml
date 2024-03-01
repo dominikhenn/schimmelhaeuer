@@ -1,0 +1,20 @@
+title: 'Die Schimmelhäuer'
+default_lang: de
+author:
+  name: 'Die Schimmelhäuer'
+  email: Info@Schimmelhaeuer.de
+taxonomies:
+  - category
+  - tag
+metadata:
+  description: 'Die Schimmelhäuer - Schützen- und Bürgerverein Kaltenbach / Bellingroth 1925 e.V.'
+  keywords: 'Bürgerverein,Schützenverein,Schützen,Schimmelhäuer,1925,e.V.,Engelskirchen,Kaltenbach,Bellingroth,Termine,Majestäten,Sport,Oberberg'
+summary:
+  enabled: true
+  format: short
+  size: 300
+  delimiter: '==='
+redirects: null
+routes: null
+blog:
+  route: /blog
