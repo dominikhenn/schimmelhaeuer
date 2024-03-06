@@ -1,0 +1,19 @@
+enabled: true
+from: info@schimmelhaeuer.com
+to: info@schimmelhaeuer.com
+mailer:
+  engine: none
+  smtp:
+    server: localhost
+    port: 25
+    encryption: none
+    user: null
+    password: null
+  sendmail:
+    bin: '/usr/sbin/sendmail -bs'
+content_type: text/plain
+debug: false
+cc: null
+bcc: null
+reply_to: null
+body: null
