@@ -33,7 +33,7 @@ pages:
   type: regular
   dirs:
     - 'page://'
-  theme: future2021
+  theme: future-sh-2024
   order:
     by: default
     dir: asc
