@@ -1,1 +1,22 @@
 /* Custom CSS */
+#main .events-container .events-listing .event-article .event .event-left-column{display:block;margin-right:2.35%;width:100%}
+#main .events-container .events-listing .event-article .event .event-left-column .event-datetime{color:#555;display:block;margin:0.5rem 1rem 0 0;text-align:left}
+#main .events-container .events-listing .event-article .event .event-right-column{display:block;width:100%}
+
+@media screen and (min-width: 768px){
+    #main .events-container .events-listing .event-article .event .event-left-column{float:left;display:block;margin-right:2.35%;width:205px}
+    #main .events-container .events-listing .event-article .event .event-left-column .event-datetime{text-align:right}
+    #main .events-container .events-listing .event-article .event .event-right-column{float:left;display:block;width:calc(100% - 265px)}
+}
+#main .events-container .events-listing .event-article .event .event-left-column .event-datetime .event-day{display:block;font-size:1.75rem;font-weight:bold;line-height:1;margin:0}
+#main .events-container .events-listing .event-article .event .event-left-column .event-datetime .event-month{display:block;font-size:1rem;font-weight:bold;line-height:1;margin:0.5rem 0;text-transform:uppercase}
+#main .events-container .events-listing .event-article .event .event-left-column .event-datetime .event-time{display:block;font-size:0.95rem;line-height:1;}
+#main .events-container .events-listing .event-article .event .event-left-column .event-datetime .event-year{display:none}
+#main .events-container .events-listing .event-article .event .event-right-column .event-title{margin:0.3rem 0rem}
+#main .events-container .events-listing .event-article .event .event-right-column .event-location{margin:-0.5rem 0 0.3rem}
+#main .event-container .event-listing{display:block;margin-right:2.35%;width:100%}
+#main .event-container .event-listing .event-article{margin-bottom:0;padding:0;padding-bottom:1rem}
+#main .event-container .event-listing .event-article .event-header img{width:100%}
+#main .event-container .event-listing .event-article .event .event-right-column{display:flex;flex-direction:column}
+#main .event-container .event-listing .event-article .event .event-right-column .event-title{margin-top:1rem}
+#main .event-container .event-listing .event-article .event .event-right-column .event-location{margin-top:-.5rem;margin-bottom:2rem}
