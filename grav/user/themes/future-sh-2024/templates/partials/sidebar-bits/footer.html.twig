@@ -5,10 +5,11 @@
     <p>{{theme_config.footer.description}}</p>
     <ul class="actions {% if show_sidebar == false %}special{% endif %}">
       <li><a href="{{theme_config.footer.button_url}}" class="button" aria-label="{{theme_config.footer.title}}">{{theme_config.footer.button_text}}</a></li>
+      <li><a href="/datenschutz" class="button" aria-label="Datenschutz">Datenschutz</a></li>
     </ul>
   </section>
 {% endif %}
-    
+
 <!-- Social links and Copyright -->
 <section id="footer">
   {% if theme_var('enable_social') %}
