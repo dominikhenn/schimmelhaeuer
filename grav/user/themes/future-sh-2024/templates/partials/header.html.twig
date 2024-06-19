@@ -1,7 +1,7 @@
 <header id="header">
-    
+
     <div class="logo">
-      
+
       <a href="{{ home_url }}" class="">
        {% if logoImageHeader == 'image' %}
         {% include 'partials/logo.html.twig' with {'logo_class': 'logo-img'} %}
@@ -12,7 +12,7 @@
       {% endif %}
       </a>
     </div>
-  
+
   <nav class="dropdown">
     {% block header_navigation %}
       {% include 'partials/navigation.html.twig' %}
@@ -24,7 +24,7 @@
         {% if icon_login %}
         <li class="login-logout">
         {% if not grav.user.authenticated %}
-          <a class="fa-sign-in-alt" href="{{ base_url_absolute }}/login" title="{{ 'PLUGIN_LOGIN.BTN_LOGIN'|t }}">{{ 'PLUGIN_LOGIN.BTN_LOGIN'|t }}</a>
+          <a class="fa-user" href="{{ base_url_absolute }}/login" title="{{ 'PLUGIN_LOGIN.BTN_LOGIN'|t }}">{{ 'PLUGIN_LOGIN.BTN_LOGIN'|t }}</a>
         {% else %}
           <a class="fa-sign-out-alt" href="{{ url(uri.addNonce((uri.path)|trim('/') ~ '/task' ~ config.system.param_sep ~ 'login.logout', 'logout-form', 'logout-nonce'))|e }}" title="{{ 'PLUGIN_LOGIN.BTN_LOGOUT'|t }} {{ grav.user.fullname ?: grav.user.username }}">{{ 'PLUGIN_LOGIN.BTN_LOGOUT'|t }}</a>
         {% endif %}

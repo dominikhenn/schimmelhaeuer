@@ -19,5 +19,6 @@ shareicons:
     whatsapp: true
     telegram: true
 show_breadcrumbs: true
+show_sidebar: true
 ---
 

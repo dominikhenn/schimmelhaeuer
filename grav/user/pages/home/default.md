@@ -10,4 +10,6 @@ subtitle: 'Schützen- und Bürgerverein'
 ---
 
 Schützen- und Bürgerverein
-Kaltenbach / Bellingroth 1925 e.V.
+Kaltenbach / Bellingroth 1925 e.V.  
+  
+[zur alten Webseite](http://legacy.schimmelhaeuer.de/)

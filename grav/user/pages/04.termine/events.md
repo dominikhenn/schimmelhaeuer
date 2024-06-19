@@ -12,8 +12,8 @@ content:
     order:
         by: date
         dir: asc
-    limit: '10'
+    limit: '20'
     pagination: true
+show_sidebar: true
 ---
-
 

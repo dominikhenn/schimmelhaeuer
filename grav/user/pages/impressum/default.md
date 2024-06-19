@@ -18,9 +18,9 @@ In Kaltenbach dem Wegweiser "Schützenhalle" folgen
 **Postanschrift:**  
 Schützen- und Bürgerverein  
 Kaltenbach / Bellingroth 1925 e.V.  
-z. Hd. Rainer Horsch  
-Uelpestr. 7  
-51764 Wiehl-Bielstein
+z. Hd. Olaf Auricht
+Bergerhofer Str. 29
+51764 Wiehl
 
 **Ansprechpartner:** [Vorstand](/der-verein)  
 **Hallenwarte:** [Hallenwart (Hallenmiete)](/der-verein)
