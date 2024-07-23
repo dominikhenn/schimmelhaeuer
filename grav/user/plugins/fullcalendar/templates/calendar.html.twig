@@ -1,0 +1,51 @@
+{% extends 'partials/base.html.twig' %}
+{% set debug = false  %}
+{% block content %}
+	<article class="post-2 page type-page status-publish hentry">
+		<header class="entry-header">
+		</header>
+		<div class="entry-content">
+			<h2>{{ page.header.title }}</h2>
+			{% set numcalendars = 0  %} {# DONE: find number of ics files, put them in invisible div for automatic processing by calendar.js #}
+			{% set num_mpics = 0  %}
+			{% set calendars = []   %}  {# empty array  #}
+			{% for file in page.media %}
+				{#
+				{% if debug %}  {{ dump('file:',file|print_r) }}  {% endif %}
+				#}
+				{% if (file.filename|ends_with('.ics')) %}
+					{% if (debug) %}    {{ dump('calendarfile:',file.filename|string) }}    {% endif %}
+					{% set calendars = calendars|merge([file.filename|string])  %}
+					{% set numcalendars = numcalendars + 1 %}
+				{% endif %}
+				{% if (file.filename|ends_with('.jpg')) %}
+					{% if (debug) %}    {{ dump('monthpic:',file.filename|string) }}    {% endif %}
+					{% set num_mpics = num_mpics + 1 %}
+				{% endif %}
+			{% endfor %}
+			{% if (debug) %}
+				{{ dump('numcalendars:',numcalendars) }}
+				{{ dump('num_pics:',num_mpics) }}
+				{{ dump('calendars:',calendars|print_r) }}
+			{% endif %}
+			{% if (num_mpics|int) >= 12 %} {# 12 pics sollten für 1 Jahr reichen :-) #}
+				<div id='actMonth'></div>
+			{% endif %}
+
+			{% set lang = grav.language.getLanguage   %}
+			{#
+			<span>{{ lang }}</span>
+			<span>{{ page.header.lang }}</span>
+			#}
+			{% if page.header.lang|length > 0   %}
+				{% set lang = page.header.lang    %}
+			{% endif %}
+			<div id='cfgLocale' style='display:none;'>{{ lang }}</div>
+
+			{% if (numcalendars|int) > 0 %} {# write local page calendars to DOM, json encoded #}
+				<div id='pagecalendars' style='display:none;'>{{ calendars|json_encode() }}</div>
+			{% endif %}
+			{{ page.content|raw }}
+		</div>
+	</article>
+{% endblock %}

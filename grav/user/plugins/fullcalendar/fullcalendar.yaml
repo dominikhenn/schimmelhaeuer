@@ -1,0 +1,10 @@
+enabled: true
+showlegend: false
+weekNumbers: false
+cors_api_url: null
+useIcsTimezone: false
+enableDescPopup: false
+tz_offset_single: 0
+tz_offset_rec: 0
+enableOnAllPages: false
+firstWeekDay: 1

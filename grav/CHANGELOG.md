@@ -1,3 +1,29 @@
+# v1.7.46
+## 05/15/2024
+
+1. [](#improved) 
+   * Better handling of external protocols in `Utils::url()` such as `mailto:`, `tel:`, etc.
+   * Handle `GRAV_ROOT` or `GRAV_WEBROOT` when `/` [#3667](https://github.com/getgrav/grav/pull/3667)
+1. [](#bugfix)
+   * Fixes for multi-lang taxonomy when reinitializing the languages (e.g. LangSwitcher plugin) 
+   * Ensure the full filepath is checked for invalid filename in `MediaUploadTrait::checkFileMetadata()`
+   * Fixed a bug in the `on_events` REGEX pattern of `Security::detectXss()` as it was not matching correctly.
+   * Fixed an issue where `read_file()` Twig function could be used nefariously in content [#GHSA-f8v5-jmfh-pr69](https://github.com/getgrav/grav/security/advisories/GHSA-f8v5-jmfh-pr69)
+
+# v1.7.45
+## 03/18/2024
+
+1. [](#new)
+   * Added new Image trait for `decoding` attribute [#3796](https://github.com/getgrav/grav/pull/3796)
+1. [](#bugfix)
+   * Fixed some multibyte issues in Inflector class [#732](https://github.com/getgrav/grav/issues/732)
+   * Fallback to page modified date if Page date provided is invalid and can't be parsed [getgrav/grav-plugin-admin#2394](https://github.com/getgrav/grav-plugin-admin/issues/2394)
+   * Fixed a path traversal vulnerability with file uploads [#GHSA-m7hx-hw6h-mqmc](https://github.com/getgrav/grav/security/advisories/GHSA-m7hx-hw6h-mqmc)
+   * Fixed a security issue with insecure Twig functions be processed [#GHSA-2m7x-c7px-hp58](https://github.com/getgrav/grav/security/advisories/GHSA-2m7x-c7px-hp58) [#GHSA-r6vw-8v8r-pmp4](https://github.com/getgrav/grav/security/advisories/GHSA-r6vw-8v8r-pmp4) [#GHSA-qfv4-q44r-g7rv](https://github.com/getgrav/grav/security/advisories/GHSA-qfv4-q44r-g7rv) [#GHSA-c9gp-64c4-2rrh](https://github.com/getgrav/grav/security/advisories/GHSA-c9gp-64c4-2rrh)
+1. [](#improved) 
+   * Updated composer packages
+   * Updated `bin/composer.phar` to latest `2.7.2`
+
 # v1.7.44
 ## 01/05/2024
 
@@ -103,6 +129,7 @@
 1. [](#improved)
     * Removed outdated `xcache` setting [#3615](https://github.com/getgrav/grav/pull/3615)
     * Updated `robots.txt` [#3625](https://github.com/getgrav/grav/pull/3625)
+    * Handle the situation when GRAV_ROOT or GRAV_WEBROOT are `/` [#3625](https://github.com/getgrav/grav/pull/3667)
 1. [](#bugfix)
     * Fixed `force_ssl` redirect in case of undefined hostname [#3702](https://github.com/getgrav/grav/pull/3702)
     * Fixed an issue with duplicate identical page paths
