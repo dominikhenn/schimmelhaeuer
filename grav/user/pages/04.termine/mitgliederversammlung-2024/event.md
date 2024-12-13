@@ -7,6 +7,7 @@ event:
     start: '11-10-2024 19:00'
     freq: none
     ticket_show: hidden
+    location: 'Schützenhalle Kaltenbach'
 subtitle: 'Vereinsinterner Termin'
 ---
 

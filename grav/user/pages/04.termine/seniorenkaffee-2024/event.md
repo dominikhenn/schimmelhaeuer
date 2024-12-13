@@ -8,6 +8,7 @@ event:
     end: '07-12-2024 18:00'
     freq: none
     ticket_show: hidden
+    location: 'Schützenhalle Kaltenbach'
 ---
 
 Alle Bewohner von Kaltenbach/Bellingroth ab 70 sind herzlich eingeladen

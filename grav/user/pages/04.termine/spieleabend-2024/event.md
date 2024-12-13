@@ -7,5 +7,6 @@ event:
     start: '30-12-2024 18:00'
     freq: none
     ticket_show: hidden
+    location: 'Schützenhalle Kaltenbach'
 ---
 

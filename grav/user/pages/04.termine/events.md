@@ -12,6 +12,9 @@ content:
     order:
         by: date
         dir: asc
+    dateRange:
+        start: today
+        field: header.event.start
     limit: '20'
     pagination: true
 show_sidebar: true
